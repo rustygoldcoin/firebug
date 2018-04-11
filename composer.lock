@@ -1,0 +1,64 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "3c1fb048f7ee823bb1deede8245e11d3",
+    "content-hash": "73d1da963b481a5ebbaa98e194f3acd1",
+    "packages": [],
+    "packages-dev": [
+        {
+            "name": "ua1-labs/firetest",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ua1-labs/firetest.git",
+                "reference": "17bc07a5d1a784d99363e3edfa620080f366c8d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ua1-labs/firetest/zipball/17bc07a5d1a784d99363e3edfa620080f366c8d3",
+                "reference": "17bc07a5d1a784d99363e3edfa620080f366c8d3",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fire\\": "Fire/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joshua L Johnson",
+                    "email": "josh@ua1.us"
+                }
+            ],
+            "description": "A Simple PHP Testing Framework Created for the FireStudio Project",
+            "keywords": [
+                "fire",
+                "firedb",
+                "firestudio",
+                "firetest",
+                "test",
+                "testing",
+                "unit",
+                "unittest"
+            ],
+            "time": "2018-04-10 22:31:58"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "ua1-labs/firetest": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

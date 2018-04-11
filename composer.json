@@ -1,0 +1,27 @@
+{
+    "name": "ua1-labs/firebug",
+    "description": "FireBug is an extendable PHP Debugging Panel you can add to any application.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "UA1 Labs",
+            "email": "development@ua1.us"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "ua1-labs/firetest": "dev-master"
+    },
+    "scripts": {
+        "test": "php vendor/ua1-labs/firetest/scripts/runner.php --dir=. --ext=.test.php"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fire\\": "Fire/"
+        },
+        "files": [
+            "functions.php"
+        ]
+    }
+
+}

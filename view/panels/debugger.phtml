@@ -1,0 +1,28 @@
+<?php
+    $debuggers = $this->getDebuggers();
+?>
+
+<?php if (!empty($debuggers)) { ?>
+    <?php foreach ($debuggers as $debugger) { ?>
+        <span class="fs-label">
+            <?php
+                $traces = $debugger->getTrace();
+                foreach ($traces as $index => $trace) {
+                    $traceLine = '#' . $index . ' ' . $trace['file']
+                        . '(' . $trace['line'] . ') ';
+
+                    if (!empty($trace['class'])) {
+                        $traceLine .= $trace['class'] . '::';
+                    }
+
+                    $traceLine .= $trace['function'] . '()'
+                        . '<br>';
+                    echo $traceLine;
+                }
+            ?>
+        </span>
+        <pre class="debugger"><?php echo var_dump($debugger->getMessage()); ?></pre>
+    <?php } ?>
+<?php } else { ?>
+    <p>No Debuggers Found...</p>
+<?php } ?>
