@@ -13,7 +13,7 @@
         "ua1-labs/firetest": "dev-master"
     },
     "scripts": {
-        "test": "php vendor/ua1-labs/firetest/scripts/runner.php --dir=. --ext=.test.php"
+        "test": "php vendor/ua1-labs/firetest/scripts/runner.php --dir=Test --ext=.Test.php"
     },
     "autoload": {
         "psr-4": {

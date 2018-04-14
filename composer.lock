@@ -14,12 +14,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ua1-labs/firetest.git",
-                "reference": "17bc07a5d1a784d99363e3edfa620080f366c8d3"
+                "reference": "426a21dea3f78caae025640eb2e0701f0bcbbf62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ua1-labs/firetest/zipball/17bc07a5d1a784d99363e3edfa620080f366c8d3",
-                "reference": "17bc07a5d1a784d99363e3edfa620080f366c8d3",
+                "url": "https://api.github.com/repos/ua1-labs/firetest/zipball/426a21dea3f78caae025640eb2e0701f0bcbbf62",
+                "reference": "426a21dea3f78caae025640eb2e0701f0bcbbf62",
                 "shasum": ""
             },
             "type": "library",
@@ -49,7 +49,7 @@
                 "unit",
                 "unittest"
             ],
-            "time": "2018-04-10 22:31:58"
+            "time": "2018-04-12 14:21:45"
         }
     ],
     "aliases": [],

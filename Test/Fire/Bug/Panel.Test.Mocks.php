@@ -13,14 +13,15 @@
  * @copyright Copyright (c) UA1 Labs
  */
 
-namespace Fire;
+namespace Test\Fire\Bug;
 
-use Exception;
+use Fire\Bug\Panel;
 
 /**
- * Class used to proxy Exceptions for Fire\Bug.
+ * Test panel used so we can test the functionality of
+ * the abstract Fire\Bug\Panel class.
  */
-class BugException extends Exception
+class PanelMock extends Panel
 {
 
 }
