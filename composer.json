@@ -8,6 +8,14 @@
             "email": "development@ua1.us"
         }
     ],
+    "keywords": [
+        "debugging",
+        "debugger",
+        "var_dump",
+        "test",
+        "firestudio",
+        "fire"
+    ],
     "require": {},
     "require-dev": {
         "ua1-labs/firetest": "dev-master"
