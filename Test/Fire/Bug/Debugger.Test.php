@@ -28,7 +28,7 @@ class Debugger extends TestCase
      * Testing the setMessage()/getMessage() methods.
      * @return void
      */
-    public function testSetAndGetMessage()
+    public function testSetAndGetValue()
     {
         $debugger = new FireBugDebugger();
         $test = [
@@ -39,9 +39,9 @@ class Debugger extends TestCase
             1.00
          ];
          foreach ($test as $value) {
-            $debugger->setMessage($value);
-            $this->should('Message should be able to be any value and should be returned without mutating.');
-            $message = $debugger->getMessage();
+            $debugger->setValue($value);
+            $this->should('Value should be able to be any value and should be returned without mutating.');
+            $message = $debugger->getValue();
             $this->assert($value === $message);
         }
      }
