@@ -7,9 +7,9 @@ The true power of FireBug is that it can easily be added to any project and expa
 
 1. Add `ua1-labs\firebug:dev-master` to your `require-dev` configuration in your `composer.json` file.
 
-    "require-dev": {
-        "ua1-labs": "dev-master"
-    }
+        "require": {
+            "ua1-labs/firebug": "dev-master"
+        }
 
 2. Run `composer install`
 
