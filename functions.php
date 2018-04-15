@@ -15,16 +15,20 @@
 
 /**
  * The debugger method for generating a debug message and stack trace.
- * @param  mixed $message The value you are debugging
+ * @param  mixed $value The value you are debugging
  * @return void
  */
-function debugger($message)
+function debugger($value)
 {
-    $fireBug = Fire\Bug::get();
-    $debugger = new \Fire\Bug\Debugger();
-    $debugger->setMessage($message);
-    $debugger->setTrace(debug_backtrace());
-    $fireBug
-        ->getPanel(\Fire\Bug\Panel\Debugger::ID)
-        ->addDebugger($debugger);
+    if (php_sapi_name() === 'cli') {
+        var_dump($value);
+    } else {
+        $fireBug = Fire\Bug::get();
+        $debugger = new \Fire\Bug\Debugger();
+        $debugger->setValue($value);
+        $debugger->setTrace(debug_backtrace());
+        $fireBug
+            ->getPanel(\Fire\Bug\Panel\Debugger::ID)
+            ->addDebugger($debugger);
+    }
 }

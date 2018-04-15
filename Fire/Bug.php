@@ -131,7 +131,7 @@ final class Bug extends Panel
     {
         if (!empty($this->_startTime)) {
             $timeEnd = microtime(true);
-            return ($timeEnd - $this->_startTime) * 1000;
+            return round(($timeEnd - $this->_startTime) * 1000, 4);
         }
         return false;
     }
@@ -142,9 +142,13 @@ final class Bug extends Panel
      */
     public function render()
     {
-        ob_start();
-        include $this->_template;
-        ob_end_flush();
+        if (php_sapi_name() === 'cli') {
+            echo 'FireBug: ' . $this->getLoadTime() . ' milliseconds' . "\n";
+        } else {
+            ob_start();
+            include $this->_template;
+            ob_end_flush();
+        }
     }
 
 }

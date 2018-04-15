@@ -23,10 +23,10 @@ class Debugger
 {
 
     /**
-     * The debugger message
+     * The debugger value
      * @var mixed
      */
-    private $_message;
+    private $_value;
 
     /**
      * The stack trace to the debugger.
@@ -39,7 +39,7 @@ class Debugger
      */
     public function __construct()
     {
-        $this->_message = '';
+        $this->_value = '';
         $this->_trace = '';
     }
 
@@ -47,18 +47,18 @@ class Debugger
      * Set the message value.
      * @param mixed $message The message value
      */
-    public function setMessage($message)
+    public function setValue($value)
     {
-        $this->_message = $message;
+        $this->_value = $value;
     }
 
     /**
      * Gets the message value.
      * @return mixed
      */
-    public function getMessage()
+    public function getValue()
     {
-        return $this->_message;
+        return $this->_value;
     }
 
     /**
