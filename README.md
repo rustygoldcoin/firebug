@@ -131,7 +131,6 @@ FireBug also comes bundled with a built in timer to determine how long your resp
      */
     public function timer($start = null)
 
-
     /**
      * Starts the timer for calculating app run time.
      * @return void
