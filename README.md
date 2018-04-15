@@ -24,7 +24,7 @@ When rendering out FireBug, it is suggested that you place it the footer of your
 
 ### Debugger Panel
 
-As mentioned before, FireBug comes bundled with a "Debuggers" panel. This panel allows you to replace your use of `var_dump` and `debug_trace`. When FireBug is installed in your application, all you have to do is call the `debugger(mixed $message);` function and let FireBug do the work. This function can take any value and will simply `var_dump` and `debug_trace` it within the "Debuggers" panel of FireBug.
+As mentioned before, FireBug comes bundled with a "Debuggers" panel. This panel allows you to replace your use of `var_dump` and `debug_trace`. When FireBug is installed in your application, all you have to do is call the `debugger(mixed $value);` function and let FireBug do the work. This function can take any value and will simply `var_dump` and `debug_trace` it within the "Debuggers" panel of FireBug.
 
 Example:
 
