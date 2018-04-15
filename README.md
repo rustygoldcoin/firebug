@@ -84,7 +84,7 @@ Three easy steps and you just added your own panel to FireBug! Now with that bei
 
 ### Timer
 
-FireBug also comes bundled with a built in timer to determine how long your responce times are directly in the panel. If you are not seeing the panel display the load time in milliseconds, you need to initialize the start time of your application. Here's how:
+FireBug also comes bundled with a built in timer to determine how long your response times are directly in the panel. If you are not seeing the panel display the load time in milliseconds, you need to initialize the start time of your application. Here's how:
 
     $fireBug = Fire\Bug::get();
     $fireBug->startTimer();
@@ -121,6 +121,16 @@ FireBug also comes bundled with a built in timer to determine how long your resp
      * @return array<Fire\Bug\Panel>
      */
     public function getPanels()
+
+    /**
+     * Method used to measure the amount of time that passed in milliseconds.
+     * If you pass in a $start time, then you will be returned time length from
+     * the start time. If you don't pass anything in, a start time will be returned.
+     * @param  float|null $start The start time.
+     * @return float
+     */
+    public function timer($start = null)
+
 
     /**
      * Starts the timer for calculating app run time.

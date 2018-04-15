@@ -115,12 +115,29 @@ final class Bug extends Panel
     }
 
     /**
+     * Method used to measure the amount of time that passed in milliseconds.
+     * If you pass in a $start time, then you will be returned time length from
+     * the start time. If you don't pass anything in, a start time will be returned.
+     * @param  float|null $start The start time.
+     * @return float
+     */
+    public function timer($start = null)
+    {
+        if ($start) {
+            $end = microtime(true);
+            return round(($end - $start) * 1000, 4);
+        } else {
+            return microtime(true);
+        }
+    }
+
+    /**
      * Starts the timer for calculating app run time.
      * @return void
      */
     public function startTimer()
     {
-        $this->_startTime = microtime(true);
+        $this->_startTime = $this->timer();
     }
 
     /**
@@ -130,8 +147,7 @@ final class Bug extends Panel
     public function getLoadTime()
     {
         if (!empty($this->_startTime)) {
-            $timeEnd = microtime(true);
-            return round(($timeEnd - $this->_startTime) * 1000, 4);
+            return $this->timer($this->_startTime);
         }
         return false;
     }
