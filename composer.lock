@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3c1fb048f7ee823bb1deede8245e11d3",
+    "hash": "75c764e5953c04defd4e8f9c21b63ed3",
     "content-hash": "73d1da963b481a5ebbaa98e194f3acd1",
     "packages": [],
     "packages-dev": [
@@ -14,13 +14,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ua1-labs/firetest.git",
-                "reference": "426a21dea3f78caae025640eb2e0701f0bcbbf62"
+                "reference": "fdfc29592dad3b801f2baca4f8cd546c2ac78694"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ua1-labs/firetest/zipball/426a21dea3f78caae025640eb2e0701f0bcbbf62",
-                "reference": "426a21dea3f78caae025640eb2e0701f0bcbbf62",
+                "url": "https://api.github.com/repos/ua1-labs/firetest/zipball/fdfc29592dad3b801f2baca4f8cd546c2ac78694",
+                "reference": "fdfc29592dad3b801f2baca4f8cd546c2ac78694",
                 "shasum": ""
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "2.*"
             },
             "type": "library",
             "autoload": {
@@ -34,11 +37,11 @@
             ],
             "authors": [
                 {
-                    "name": "Joshua L Johnson",
-                    "email": "josh@ua1.us"
+                    "name": "UA1 Labs",
+                    "email": "development@ua1.us"
                 }
             ],
-            "description": "A Simple PHP Testing Framework Created for the FireStudio Project",
+            "description": "A Lightweight PHP Testing Framework",
             "keywords": [
                 "fire",
                 "firedb",
@@ -49,7 +52,7 @@
                 "unit",
                 "unittest"
             ],
-            "time": "2018-04-12 14:21:45"
+            "time": "2018-04-18 23:26:48"
         }
     ],
     "aliases": [],

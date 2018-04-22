@@ -11,5 +11,7 @@ $bug->startTimer();
 //call debugger
 debugger('debug');
 
+debugger($bug);
+
 //render the firebug debug panel
 $bug->render();

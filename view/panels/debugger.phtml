@@ -21,7 +21,10 @@
                 }
             ?>
         </span>
-        <pre class="debugger"><?php echo var_dump($debugger->getValue()); ?></pre>
+        <span class="fs-label">
+            <span class="fs-pre-wrap">wrap</span>
+            <pre class="debugger"><?php echo var_dump($debugger->getValue()); ?></pre>
+        </span>
     <?php } ?>
 <?php } else { ?>
     <p>No Debuggers Found...</p>

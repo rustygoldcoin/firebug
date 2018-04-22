@@ -42,6 +42,20 @@
         margin: 0 0 10px 0;
         overflow-x: scroll;
     }
+    .fs-debug-panel pre.fs-wrap {
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
+        overflow: hidden;
+    }
+    .fs-debug-panel .fs-pre-wrap {
+        font-size: 12px;
+        display: block;
+        color: #5178f1;
+        cursor: pointer;
+    }
     .fs-debug-panel table {
         color: #464646;
         width: 100%;
@@ -102,6 +116,25 @@
                     } else {
                         section.classList.add('closed')
                         button.innerHTML = '(+)';
+                    }
+                }
+            }
+        });
+    })();
+    (function(){
+        document.addEventListener('DOMContentLoaded', function () {
+            var preWrapButtons = document.querySelectorAll('.fs-pre-wrap');
+            for (i = 0; i < preWrapButtons.length; i++) {
+                preWrapButtons[i].onclick = function () {
+                    var button = this;
+                    var pre = button.parentElement.getElementsByTagName('pre')[0];
+                    debugger;
+                    if (pre.classList.contains('fs-wrap')) {
+                        pre.classList.remove('fs-wrap')
+                        button.innerHTML = 'wrap';
+                    } else {
+                        pre.classList.add('fs-wrap')
+                        button.innerHTML = 'unwrap';
                     }
                 }
             }
