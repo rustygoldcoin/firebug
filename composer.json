@@ -1,6 +1,6 @@
 {
     "name": "ua1-labs/firebug",
-    "description": "FireBug is an extendable PHP Debugging Panel you can add to any application.",
+    "description": "An expandable PHP debugger panel.",
     "license": "MIT",
     "authors": [
         {
@@ -16,6 +16,7 @@
         "firestudio",
         "fire"
     ],
+    "type": "library",
     "require": {},
     "require-dev": {
         "ua1-labs/firetest": "dev-master"
