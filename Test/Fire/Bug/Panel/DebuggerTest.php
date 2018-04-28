@@ -24,7 +24,7 @@ use Fire\BugException;
 /**
  * Test suite for Fire\Bug\Panel\Debugger
  */
-class Debugger extends TestCase {
+class DebuggerTest extends TestCase {
 
     /**
      * Tests the Fire\Bug\Panel\Debugger::addDebugger() and Fire\Bug\Panel\Debugger:getDebuggers() methods.

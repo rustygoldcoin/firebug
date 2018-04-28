@@ -3,6 +3,10 @@ An expandable PHP debugger panel.
 
 The true power of FireBug is that it can easily be added to any project and expanded upon! You can even create your own panels to track whatever data you care about while your going through debugging. FireBug comes featured with a `Debuggers` panel. Which allows you to call `debugger()` anywhere inside of your application. All debuggers will display the entire `debug_trace` along with `var_dump` within the "Debuggers" section of the FireBug Panel.
 
+### FireBug API Documentation
+
+[FireBug API Documentation](https://ua1.us/open-source/firebug/api/)
+
 ### Installation
 
 1. Add `ua1-labs\firebug:dev-master` to your `require-dev` configuration in your `composer.json` file.

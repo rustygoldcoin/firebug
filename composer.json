@@ -19,14 +19,17 @@
     "type": "library",
     "require": {},
     "require-dev": {
-        "ua1-labs/firetest": "dev-master"
+        "ua1-labs/firetest": "dev-master",
+        "phpdocumentor/phpdocumentor": "2.*"
     },
     "scripts": {
-        "test": "php vendor/ua1-labs/firetest/scripts/runner.php --dir=Test --ext=.Test.php"
+        "test": "php vendor/ua1-labs/firetest/scripts/runner.php --dir=Test --ext=Test.php",
+        "docs": "vendor/bin/phpdoc -d ./Fire -t ./docs/api"
     },
     "autoload": {
         "psr-4": {
-            "Fire\\": "Fire/"
+            "Fire\\": "Fire/",
+            "Test\\": "Test/"
         },
         "files": [
             "functions.php"

@@ -13,7 +13,7 @@
  * @copyright Copyright (c) UA1 Labs
  */
 
-namespace Test\Fire\Bug;
+namespace Test\Mock\Fire\Bug;
 
 use Fire\Bug\Panel;
 

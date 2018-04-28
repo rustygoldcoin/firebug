@@ -21,7 +21,7 @@ use Fire\Bug\Debugger as FireBugDebugger;
 /**
  * Test suite for class Fire\Bug\Debugger
  */
-class Debugger extends TestCase
+class DebuggerTest extends TestCase
 {
 
     /**

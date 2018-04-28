@@ -16,18 +16,12 @@
 namespace Test\Fire\Bug;
 
 use Fire\Test\TestCase;
-use Test\Fire\Bug\PanelMock;
-
-/**
- * Includes mocks for testing this class
- */
-require_once __DIR__ . '/Panel.Test.Mocks.php';
-
+use Test\Mock\Fire\Bug\PanelMock;
 
 /**
  * Test suite for Fire\Bug\Panel
  */
-class Panel extends TestCase
+class PanelTest extends TestCase
 {
 
     /**
@@ -35,7 +29,7 @@ class Panel extends TestCase
      */
     const ID = 'testPanel';
     const NAME = 'Test Panel';
-    const TEMPLATE = __DIR__ . '/Panel.Test.Template.phtml';
+    const TEMPLATE = __DIR__ . '/../../view/fire/bug/panel.phtml';
 
     public function beforeEach()
     {
@@ -73,7 +67,7 @@ class Panel extends TestCase
         $this->_testPanel->render();
         $result = ob_get_contents();
         ob_end_clean();
-        $expected = file_get_contents(__DIR__.'/Panel.Test.Result.phtml');
+        $expected = file_get_contents(__DIR__ . '/../../view/fire/bug/panel-result.phtml');
         $this->should('Rendering a panel should include panel header and footer and interpolate model correctly.');
         $this->assert($result === $expected);
     }
