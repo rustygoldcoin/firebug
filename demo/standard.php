@@ -6,7 +6,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $bug = Fire\Bug::get();
 
 //start timer to get processing time
-$bug->startTimer();
+$bug->enable();
 
 //call debugger
 debugger('debug');

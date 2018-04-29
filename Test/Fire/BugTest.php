@@ -97,7 +97,7 @@ class Bug extends TestCase
         $this->should('When you don\'t start the timer, FireBug shouldn\'t provide load time.');
         $this->assert($time === false);
 
-        $fireBug->startTimer();
+        $fireBug->enable();
         $time = $fireBug->getLoadTime();
         $this->should('When the timer is started, the end time should be greater than 0.');
         $this->assert($time > 0);

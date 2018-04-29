@@ -15,7 +15,7 @@
 
 namespace Fire;
 
-use Exception;
+use \Exception;
 
 /**
  * Class used to proxy Exceptions for Fire\Bug.

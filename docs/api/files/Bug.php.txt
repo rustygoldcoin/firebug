@@ -15,9 +15,9 @@
 
 namespace Fire;
 
-use Fire\Bug\Panel;
-use Fire\Bug\Panel\Debugger as DebuggerPanel;
-use Fire\BugException;
+use \Fire\Bug\Panel;
+use \Fire\Bug\Panel\Debugger as DebuggerPanel;
+use \Fire\BugException;
 
 /**
  * The purpose of this class is to provide a single place where you
@@ -26,18 +26,21 @@ use Fire\BugException;
 final class Bug extends Panel
 {
 
-    /**
-     * Constants
-     */
     const ID = 'firebug';
     const NAME = 'FireBug Panel';
     const TEMPLATE = __DIR__ . '/../view/firebug.phtml';
 
     /**
      * Instance of Fire\Bug
-     * @var Fire\Bug
+     * @var \Fire\Bug
      */
     static private $_instance;
+
+    /**
+     * Is firebug enabled?
+     * @var boolean
+     */
+    private $_enabled;
 
     /**
      * The firebug timer start time
@@ -47,7 +50,7 @@ final class Bug extends Panel
 
     /**
      * Array of panel objects.
-     * @var array<Fire\Bug\Panel>
+     * @var \Fire\Bug\Panel[]
      */
     private $_panels;
 
@@ -58,12 +61,13 @@ final class Bug extends Panel
     {
         parent::__construct(self::ID, self::NAME, self::TEMPLATE);
         $this->_panels = [];
+        $this->_enabled = false;
         $this->addPanel(new DebuggerPanel());
     }
 
     /**
      * Gets the instance of Fire\Bug.
-     * @return Fire\Bug
+     * @return \Fire\Bug
      */
     static function get()
     {
@@ -71,6 +75,25 @@ final class Bug extends Panel
             self::$_instance = new self();
         }
         return self::$_instance;
+    }
+
+    /**
+     * Enables firebug.
+     * @return void
+     */
+    public function enable()
+    {
+        $this->_enabled = true;
+        $this->_startTime = $this->timer();
+    }
+
+    /**
+     * Determines if firebug is enabled.
+     * @return boolean
+     */
+    public function isEnabled()
+    {
+        return $this->_enabled;
     }
 
     /**
@@ -84,7 +107,8 @@ final class Bug extends Panel
 
     /**
      * Adds a Fire\Bug\Panel object to the the array of panels.
-     * @param Fire\Bug\Panel $panel The panel you are adding to FireBug
+     * @param \Fire\Bug\Panel $panel The panel you are adding to FireBug
+     * @return void
      */
     public function addPanel(Panel $panel)
     {
@@ -98,7 +122,7 @@ final class Bug extends Panel
     /**
      * Gets a stored panel object by its ID.
      * @param [type] $id The id of defined on the Fire\Bug\Panel instance object.
-     * @return [type] Fire\Bug\Panel
+     * @return \Fire\Bug\Panel
      */
     public function getPanel($id)
     {
@@ -107,7 +131,7 @@ final class Bug extends Panel
 
     /**
      * Gets all stored panels.
-     * @return array<Fire\Bug\Panel>
+     * @return \Fire\Bug\Panel[]
      */
     public function getPanels()
     {
@@ -118,7 +142,7 @@ final class Bug extends Panel
      * Method used to measure the amount of time that passed in milliseconds.
      * If you pass in a $start time, then you will be returned time length from
      * the start time. If you don't pass anything in, a start time will be returned.
-     * @param  float|null $start The start time.
+     * @param float|null $start The start time.
      * @return float
      */
     public function timer($start = null)
@@ -132,17 +156,8 @@ final class Bug extends Panel
     }
 
     /**
-     * Starts the timer for calculating app run time.
-     * @return void
-     */
-    public function startTimer()
-    {
-        $this->_startTime = $this->timer();
-    }
-
-    /**
      * If the timer was started, the load time will be returned
-     * @return float
+     * @return float|boolean
      */
     public function getLoadTime()
     {
@@ -158,12 +173,14 @@ final class Bug extends Panel
      */
     public function render()
     {
-        if (php_sapi_name() === 'cli') {
-            echo 'FireBug: ' . $this->getLoadTime() . ' milliseconds' . "\n";
-        } else {
-            ob_start();
-            include $this->_template;
-            ob_end_flush();
+        if ($this->_enabled) {
+            if (php_sapi_name() === 'cli') {
+                echo 'FireBug: ' . $this->getLoadTime() . ' milliseconds' . "\n";
+            } else {
+                ob_start();
+                include $this->_template;
+                ob_end_flush();
+            }
         }
     }
 

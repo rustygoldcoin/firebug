@@ -17,6 +17,17 @@ The true power of FireBug is that it can easily be added to any project and expa
 
 2. Run `composer install`
 
+### Enable FireBug
+
+For performance reasons, firebug is initially disabled and needs enabled in order to use it. Here's how:
+
+    $fireBug = Fire\Bug::get();
+    $fireBug->enable();
+
+**FireBug Timer**
+
+Once FireBug is enabled, it will start a timer that will report how much time it takes to load your page and return your request. Keep in mind, that times are determined by when you enable FireBug.
+
 ### Render FireBug
 
 Once you've installed FireBug, it's time to output it somewhere in your HTML.
@@ -88,10 +99,13 @@ Three easy steps and you just added your own panel to FireBug! Now with that bei
 
 ### Timer
 
-FireBug also comes bundled with a built in timer to determine how long your response times are directly in the panel. If you are not seeing the panel display the load time in milliseconds, you need to initialize the start time of your application. Here's how:
+FireBug also comes bundled with a timer you may use to detect how much time a process takes. Here's how to use the timer:
 
     $fireBug = Fire\Bug::get();
-    $fireBug->startTimer();
+    //get a start time
+    $startTime = $fireBug->timer();
+    //get time length in milliseconds
+    $timeLength = $fireBug->timer($startTime);
 
 ### FireBug API
 
@@ -106,6 +120,18 @@ FireBug also comes bundled with a built in timer to determine how long your resp
      * @return void
      */
     static function destroy()
+
+    /**
+     * Enables FireBug
+     * @return void
+     */
+    public function enable()
+
+    /**
+     * Determines if firebug is enabled.
+     * @return boolean
+     */
+    public function isEnabled()
 
     /**
      * Adds a Fire\Bug\Panel object to the the array of panels.
@@ -134,12 +160,6 @@ FireBug also comes bundled with a built in timer to determine how long your resp
      * @return float
      */
     public function timer($start = null)
-
-    /**
-     * Starts the timer for calculating app run time.
-     * @return void
-     */
-    public function startTimer()
 
     /**
      * If the timer was started, the load time will be returned

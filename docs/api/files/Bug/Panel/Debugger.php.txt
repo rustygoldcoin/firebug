@@ -16,9 +16,9 @@
 
 namespace Fire\Bug\Panel;
 
-use Fire\Bug\Panel;
-use Fire\Bug\Debugger as FireBugDebugger;
-use Fire\BugException;
+use \Fire\Bug\Panel;
+use \Fire\Bug\Debugger as FireBugDebugger;
+use \Fire\BugException;
 
 /**
  * This class represents the panel for debuggers to be displayed
@@ -51,7 +51,7 @@ class Debugger extends Panel
 
     /**
      * Returns all debuggers that have been added.
-     * @return array
+     * @return \Fire\Bug\Debugger[]
      */
     public function getDebuggers()
     {
@@ -60,7 +60,7 @@ class Debugger extends Panel
 
     /**
      * Adds a debugger to the array of debuggers for this panel.
-     * @param /Fire/Bug/Debugger $debugger
+     * @param \Fire\Bug\Debugger $debugger
      * @return void
      */
     public function addDebugger($debugger)
