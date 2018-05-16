@@ -15,7 +15,10 @@
         "var_dump",
         "test",
         "firestudio",
-        "fire"
+        "fire",
+        "ua1labs",
+        "ua1-labs",
+        "ua1"
     ],
     "type": "library",
     "require": {},
