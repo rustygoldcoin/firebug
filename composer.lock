@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "56588f1963afa9a0688512b905d85923",
+    "content-hash": "c4b4be31644208ad4ac46bef93f7cd00",
     "packages": [],
     "packages-dev": [
         {
@@ -584,22 +584,22 @@
         },
         {
             "name": "jms/serializer",
-            "version": "1.11.0",
+            "version": "1.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "e7c53477ff55c21d1b1db7d062edc050a24f465f"
+                "reference": "93d6e03fcb71d45854cc44b5a84d645c02c5d763"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/e7c53477ff55c21d1b1db7d062edc050a24f465f",
-                "reference": "e7c53477ff55c21d1b1db7d062edc050a24f465f",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/93d6e03fcb71d45854cc44b5a84d645c02c5d763",
+                "reference": "93d6e03fcb71d45854cc44b5a84d645c02c5d763",
                 "shasum": ""
             },
             "require": {
                 "doctrine/annotations": "^1.0",
                 "doctrine/instantiator": "^1.0.3",
-                "jms/metadata": "~1.1",
+                "jms/metadata": "^1.3",
                 "jms/parser-lib": "1.*",
                 "php": "^5.5|^7.0",
                 "phpcollection/phpcollection": "~0.1",
@@ -633,7 +633,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.11-dev"
+                    "dev-1.x": "1.11-dev"
                 }
             },
             "autoload": {
@@ -643,7 +643,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Apache-2.0"
+                "MIT"
             ],
             "authors": [
                 {
@@ -664,7 +664,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2018-02-04T17:48:54+00:00"
+            "time": "2018-06-01T12:10:12+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -1559,7 +1559,7 @@
         },
         {
             "name": "symfony/config",
-            "version": "v2.8.40",
+            "version": "v2.8.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
@@ -1616,7 +1616,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.8.40",
+            "version": "v2.8.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -1734,7 +1734,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.40",
+            "version": "v2.8.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -1843,7 +1843,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v2.8.40",
+            "version": "v2.8.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -2006,7 +2006,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v2.8.40",
+            "version": "v2.8.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -2055,7 +2055,7 @@
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v2.8.40",
+            "version": "v2.8.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
@@ -2168,7 +2168,7 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v2.8.40",
+            "version": "v2.8.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/validator.git",
@@ -2307,16 +2307,16 @@
         },
         {
             "name": "ua1-labs/firetest",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ua1-labs/firetest.git",
-                "reference": "11ce0a4d097961ab718e26d26b0825caffe9a431"
+                "reference": "393d840cd823f8f04789cb8ea7d9bb0aae41682c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ua1-labs/firetest/zipball/11ce0a4d097961ab718e26d26b0825caffe9a431",
-                "reference": "11ce0a4d097961ab718e26d26b0825caffe9a431",
+                "url": "https://api.github.com/repos/ua1-labs/firetest/zipball/393d840cd823f8f04789cb8ea7d9bb0aae41682c",
+                "reference": "393d840cd823f8f04789cb8ea7d9bb0aae41682c",
                 "shasum": ""
             },
             "require-dev": {
@@ -2353,7 +2353,7 @@
                 "unit test",
                 "unittest"
             ],
-            "time": "2018-05-22T10:15:50+00:00"
+            "time": "2018-06-10T01:04:28+00:00"
         },
         {
             "name": "zendframework/zend-cache",

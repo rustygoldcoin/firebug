@@ -1,5 +1,7 @@
 # Release Changes
 
+* 1.1.1
+    * Fix issue where we couldn't see load time on debug panel.
 * 1.1.0
     * Stronger style selectors so that website styles don't overwrite panel styles.
     * Remove any instance where we are trying to set a constant using the __DIR__ magic variable. ex: const MYCONSTANT = __DIR__ . '/path.php'

@@ -170,7 +170,7 @@
 <div class="fs-debug-panel">
     <h1 class="fs-title"><?php echo $this->getName(); ?></h1>
     <?php if ($loadTime) { ?>
-        <span class="fs-label" style="text-align: right;"><?php echo $this->getLoadTime(); ?> milliseconds</span>
+        <span class="fs-label" style="text-align: right; color: #ececec;"><?php echo $loadTime; ?> milliseconds</span>
     <?php } ?>
     <?php
         foreach ($this->getPanels() as $panel) {
