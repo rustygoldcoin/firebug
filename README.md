@@ -67,13 +67,13 @@ We've given you everything you need to easily create your own panel.
         {
             const ID = 'myOwnPanel';
             const NAME = 'My Own Panel';
-            const TEMPLATE = __DIR__ . '/pathto/my-own-panel.phtml';
+            const TEMPLATE = '/pathto/my-own-panel.phtml';
 
             public $myName;
 
             public function __construct()
             {
-                parent::__construct(self::ID, self::NAME, self::TEMPLATE);
+                parent::__construct(self::ID, self::NAME, __DIR__ . self::TEMPLATE);
                 $this->myName = 'Testy Testerson';
             }
 
@@ -169,6 +169,7 @@ FireBug also comes bundled with a timer you may use to detect how much time a pr
 
     /**
      * Method used to render FireBug.
+     * @param boolean $echo Determine if the FireBug panel get echoed or returned
      * @return void
      */
-    public function render()
+    public function render($echo = true)

@@ -1,6 +1,6 @@
 {
     "name": "ua1-labs/firebug",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "An expandable PHP debugger panel.",
     "license": "MIT",
     "authors": [
@@ -27,6 +27,10 @@
         "phpdocumentor/phpdocumentor": "2.*"
     },
     "scripts": {
+        "build": [
+            "composer run test",
+            "composer run docs"
+        ],
         "test": "php vendor/ua1-labs/firetest/scripts/runner.php --dir=Test --ext=Test.php",
         "docs": "vendor/bin/phpdoc -d ./Fire -t ./docs/api"
     },

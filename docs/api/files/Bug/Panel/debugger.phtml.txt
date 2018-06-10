@@ -8,8 +8,15 @@
             <?php
                 $traces = $debugger->getTrace();
                 foreach ($traces as $index => $trace) {
-                    $traceLine = '#' . $index . ' ' . $trace['file']
-                        . '(' . $trace['line'] . ') ';
+                    $traceLine = '#' . $index . ' ';
+
+                    if (!empty($trace['file'])) {
+                        $traceLine .= $trace['file'];
+                    }
+
+                    if (!empty($trace['line'])) {
+                        $traceLine .= '(' . $trace['line'] . ') ';
+                    }
 
                     if (!empty($trace['class'])) {
                         $traceLine .= $trace['class'] . '::';
@@ -25,7 +32,9 @@
             <span class="fs-pre-wrap">wrap</span>
             <pre class="debugger fs-dark"><?php echo var_dump($debugger->getValue()); ?></pre>
         </span>
+        <hr class="fs-hr">
     <?php } ?>
 <?php } else { ?>
     <p>No Debuggers Found...</p>
 <?php } ?>
+

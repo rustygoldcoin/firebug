@@ -63,6 +63,16 @@ abstract class Panel
     }
 
     /**
+     * Sets the name for the given panel.
+     * @param string $name The name of the panel.
+     * @return void
+     */
+    public function setName($name)
+    {
+        $this->_name = $name;
+    }
+
+    /**
      * Gets the name for the given panel.
      * @return string The name
      */
@@ -78,9 +88,9 @@ abstract class Panel
     public function render()
     {
         ob_start();
-        include __DIR__ . '/../../view/partials/panel-top.phtml';
+        include __DIR__ . '/panel-top.phtml';
         include $this->_template;
-        include __DIR__ . '/../../view/partials/panel-bottom.phtml';
+        include __DIR__ . '/panel-bottom.phtml';
         ob_end_flush();
     }
 }

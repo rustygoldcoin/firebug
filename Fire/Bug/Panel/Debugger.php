@@ -31,8 +31,8 @@ class Debugger extends Panel
      * Constants
      */
     const ID = 'debugger';
-    const NAME = 'Debuggers';
-    const TEMPLATE = __DIR__ . '/../../../view/panels/debugger.phtml';
+    const NAME = '{count} Debuggers';
+    const TEMPLATE = '/debugger.phtml';
 
     /**
      * If true, allows xdebug overlays in var_dump outputs.
@@ -45,7 +45,7 @@ class Debugger extends Panel
      */
     public function __construct()
     {
-        parent::__construct(self::ID, self::NAME, self::TEMPLATE);
+        parent::__construct(self::ID, self::NAME, __DIR__ . self::TEMPLATE);
         $this->_debuggers = [];
     }
 
@@ -90,6 +90,8 @@ class Debugger extends Panel
         if (!$this->_enableXDebugOverlay) {
             ini_set('xdebug.overload_var_dump', 'off');
         }
+        $debuggerCount = count($this->_debuggers);
+        $this->setName(str_replace('{count}', '{' . $debuggerCount . '}', self::NAME));
         parent::render();
     }
 }

@@ -5,29 +5,49 @@
     /**
      * Global
      */
+     .fs-debug-panel h1,
+     .fs-debug-panel h2,
+     .fs-debug-panel h3,
+     .fs-debug-panel h4,
+     .fs-debug-panel h5,
+     .fs-debug-panel h6,
+     .fs-debug-panel p
+     {
+         font-family: "Courier New", Courier, monospace;
+     }
+
     .fs-debug-panel {
+        font-family: "Courier New", Courier, monospace;
         margin: 10px;
         padding: 20px 20px;
         border-radius: 15px;
         background-color: #464646;
         color: #ececec;
         display: block;
-        font-family: "Courier New", Courier, monospace;
         font-size: 14px;
         line-height: 16px;
         overflow: hidden;
     }
     .fs-debug-panel h1.fs-title {
+        color: #ececec;
         margin: 0;
         font-size: 32px;
         line-height: 35px;
     }
     .fs-debug-panel h3.fs-title {
+        color: #464646;
         margin: 0 0 15px 0;
         font-size: 22px;
         line-height: 24px;
     }
+    .fs-debug-panel hr.fs-hr {
+        margin: 25px 0 25px 0;
+        color: #464646;
+        border-top: 2px dashed;
+        background-color: #f0f0f0;
+    }
     .fs-debug-panel .fs-label {
+        color: #464646;
         display: block;
         margin: 0 0 5px 0;
     }
@@ -73,6 +93,7 @@
     }
     .fs-debug-panel table th,
     .fs-debug-panel table td {
+        color: #464646;
         border: 1px solid;
         text-align: left;
         padding: 5px;
@@ -157,3 +178,4 @@
         }
     ?>
 </div>
+

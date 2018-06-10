@@ -28,7 +28,7 @@ final class Bug extends Panel
 
     const ID = 'firebug';
     const NAME = 'FireBug Panel';
-    const TEMPLATE = __DIR__ . '/../view/firebug.phtml';
+    const TEMPLATE = '/firebug.phtml';
 
     /**
      * Instance of Fire\Bug
@@ -59,7 +59,7 @@ final class Bug extends Panel
      */
     public function __construct()
     {
-        parent::__construct(self::ID, self::NAME, self::TEMPLATE);
+        parent::__construct(self::ID, self::NAME, __DIR__ . self::TEMPLATE);
         $this->_panels = [];
         $this->_enabled = false;
         $this->addPanel(new DebuggerPanel());
@@ -169,9 +169,10 @@ final class Bug extends Panel
 
     /**
      * Method used to render FireBug.
+     * @param boolean $echo Determine if the FireBug panel get echoed or returned
      * @return void
      */
-    public function render()
+    public function render($echo = true)
     {
         if ($this->_enabled) {
             if (php_sapi_name() === 'cli') {
@@ -179,7 +180,14 @@ final class Bug extends Panel
             } else {
                 ob_start();
                 include $this->_template;
-                ob_end_flush();
+                $debugPanel = ob_get_contents();
+                ob_end_clean();
+
+                if ($echo) {
+                    echo $debugPanel;
+                } else {
+                    return $debugPanel;
+                }
             }
         }
     }
