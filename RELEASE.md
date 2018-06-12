@@ -1,5 +1,7 @@
 # Release Changes
-
+* 1.2.0
+    * Remove composer.lock as it is not needed because this is a library.
+    * Add overflow-x css rule for fs-content to allow tables to be scrollable. .fs-debug-panel .fs-section .fs-content overflow-x: scroll
 * 1.1.1
     * Fix issue where we couldn't see load time on debug panel.
 * 1.1.0
