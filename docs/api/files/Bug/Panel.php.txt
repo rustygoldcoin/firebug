@@ -82,6 +82,31 @@ abstract class Panel
     }
 
     /**
+     * Returns a rendered debug_backtrace.
+     * @param array $debug_backtrace
+     * @return string
+     */
+    public function renderTrace($debug_backtrace)
+    {
+        $traceLine = '';
+        foreach ($debug_backtrace as $index => $trace) {
+            $traceLine .= '#' . $index . ' ';
+            if (!empty($trace['file'])) {
+                $traceLine .= $trace['file'];
+            }
+            if (!empty($trace['line'])) {
+                $traceLine .= '(' . $trace['line'] . ') ';
+            }
+            if (!empty($trace['class'])) {
+                $traceLine .= $trace['class'] . '::';
+            }
+            $traceLine .= $trace['function'] . '()'
+                . '<br>';
+        }
+        return $traceLine;
+    }
+
+    /**
      * Renders the panel.
      * @return void
      */

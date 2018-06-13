@@ -1,4 +1,6 @@
 # Release Changes
+* 1.3.0
+    * Add renderTrace() helper method to render a standard debug_backtrace() within a panel phtml template.
 * 1.2.0
     * Remove composer.lock as it is not needed because this is a library.
     * Add overflow-x css rule for fs-content to allow tables to be scrollable. .fs-debug-panel .fs-section .fs-content overflow-x: scroll
