@@ -1,6 +1,6 @@
 {
     "name": "ua1-labs/firebug",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "description": "An expandable PHP debugger panel.",
     "license": "MIT",
     "authors": [

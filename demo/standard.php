@@ -14,4 +14,4 @@
 // debugger($bug);
 //
 // //render the firebug debug panel
-// $bug->render();
+// echo $bug->render();

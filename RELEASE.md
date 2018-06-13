@@ -1,4 +1,7 @@
 # Release Changes
+* 1.4.0
+    * Update the debugger.phtml panel to use new renderTrace() helper method to render the trace for each debugger.
+    * Remove the $echo parameter option from Fire\Bug::render method. By default this method will now return the rendered panel by default.
 * 1.3.0
     * Add renderTrace() helper method to render a standard debug_backtrace() within a panel phtml template.
 * 1.2.0

@@ -33,7 +33,7 @@ Once FireBug is enabled, it will start a timer that will report how much time it
 Once you've installed FireBug, it's time to output it somewhere in your HTML.
 
     $fireBug = Fire\Bug::get();
-    $fireBug->render();
+    echo $fireBug->render();
 
 When rendering out FireBug, it is suggested that you place it the footer of your application.
 
@@ -169,7 +169,6 @@ FireBug also comes bundled with a timer you may use to detect how much time a pr
 
     /**
      * Method used to render FireBug.
-     * @param boolean $echo Determine if the FireBug panel get echoed or returned
      * @return void
      */
-    public function render($echo = true)
+    public function render()

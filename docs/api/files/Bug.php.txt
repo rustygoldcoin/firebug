@@ -169,10 +169,9 @@ final class Bug extends Panel
 
     /**
      * Method used to render FireBug.
-     * @param boolean $echo Determine if the FireBug panel get echoed or returned
      * @return void
      */
-    public function render($echo = true)
+    public function render()
     {
         if ($this->_enabled) {
             if (php_sapi_name() === 'cli') {
@@ -183,11 +182,7 @@ final class Bug extends Panel
                 $debugPanel = ob_get_contents();
                 ob_end_clean();
 
-                if ($echo) {
-                    echo $debugPanel;
-                } else {
-                    return $debugPanel;
-                }
+                return $debugPanel;
             }
         }
     }
