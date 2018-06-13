@@ -1,4 +1,0 @@
-<div class="fs-section fs-debugger-statements closed">
-    <h3 class="fs-title"><?php echo $this->_name; ?><span class="fs-openCloseBtn"></span></h3>
-    <div class="fs-content">
-
