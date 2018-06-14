@@ -1,4 +1,6 @@
 # Release Changes
+* 1.4.2
+    * Add style for fs-hr-dotted hr classes.
 * 1.4.1
     * Updates to documentation
 * 1.4.0
