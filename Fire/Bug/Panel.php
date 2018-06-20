@@ -82,6 +82,54 @@ abstract class Panel
     }
 
     /**
+     * Returns the code passed in wrapped within a <pre> tag.
+     * @param  string $content The code you want to render
+     * @param  boolean $dark Do you want the dark theme?
+     * @return string The HTML to render
+     */
+    public function renderCode($code, $dark = true)
+    {
+        $code = '';
+        $code .= '<span class="fs-label">';
+        $code .= '<span class="fs-pre-wrap">wrap</span>';
+        $code .= '<pre class="debugger'. ($dark) ? ' fs-dark' : '' . '">';
+        $code .= $code;
+        $code .= '</pre>';
+        $code .= '</span>';
+
+        return $code;
+    }
+
+    /**
+     * Returns the HTML passed in wrapped within a <pre> tag.
+     * @param  string $content The code you want to render
+     * @param  boolean $dark Do you want the dark theme?
+     * @return string The HTML to render
+     */
+    public function renderHtml($html, $dark = true)
+    {
+        return $this->renderCode(htmlspecialchars($html), $dark);
+    }
+
+    /**
+     * Returns the JSON passed in wrapped within a <pre> tag.
+     * @param  string $content The code you want to render
+     * @param  boolean $dark Do you want the dark theme?
+     * @return string The HTML to render
+     */
+    public function renderJson($json, $dark = true)
+    {
+        if (is_object($json)) {
+            $jsonCode = json_encode($json, JSON_PRETTY_PRINT);
+        } else if (is_array($json)) {
+            $jsonCode = json_encode(($json) ? $json : (object) $json, JSON_PRETTY_PRINT);
+        } else {
+            $jsonCode = json_encode(json_decode($json), JSON_PRETTY_PRINT);
+        }
+        return $this->renderCode(htmlspecialchars($jsonCode), $dark);
+    }
+
+    /**
      * Returns a rendered debug_backtrace.
      * @param array $debug_backtrace
      * @return string

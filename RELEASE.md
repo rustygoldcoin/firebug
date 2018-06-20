@@ -1,4 +1,8 @@
 # Release Changes
+* 1.5.0
+    * Add ability to renderJson() which takes either and object or a json string and renders it within a <pre> tag.
+    * Add ability to renderHtml() which takes string html and renders it within a <pre> tag.
+    * Add ability to renderCode() which takes string of code and renders it within a <pre> tag.
 * 1.4.2
     * Add style for fs-hr-dotted hr classes.
 * 1.4.1
