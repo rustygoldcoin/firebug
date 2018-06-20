@@ -82,6 +82,42 @@ abstract class Panel
     }
 
     /**
+     * Returns a label.
+     * @param  string $content The content of the label
+     * @param  string  $class CSV list of classes you want to add
+     * @param  string  $style Custom styles you want added
+     * @return string HTML code for the separator
+     */
+    public function renderLabel($content, $class = '', $style = '')
+    {
+        $styleAttr = ($style) ? ' style="' . $style . '"' : '';
+        $classes = ($class) ? ' ' . $class : '';
+        $renderLabel = '';
+        $renderLabel .= '<span class="fs-label' . $classes . '"' . $style . '>';
+        $renderLabel .= $content;
+        $renderLabel .= '</span>';
+        return $renderLabel;
+    }
+
+    /**
+     * Returns a separator.
+     * @param  boolean $bold Do you want a bold separator
+     * @param  string  $class CSV list of classes you want to add
+     * @param  string  $style Custom styles you want added
+     * @return string HTML code for the separator.
+     */
+    public function renderSeparator($bold = true, $class = '', $style = '')
+    {
+        $styleAttr = ($style) ? ' style="' . $style . '"' : '';
+        $classes = ($class) ? ' ' . $class : '';
+        if ($bold) {
+            return '<hr class="fs-hr' . $classes . '"' . $styleAttr . '>';
+        } else {
+            return '<hr class="fs-hr-dotted' . $classes . '"' . $styleAttr . '>';
+        }
+    }
+
+    /**
      * Returns the code passed in wrapped within a <pre> tag.
      * @param  string $content The code you want to render
      * @param  boolean $dark Do you want the dark theme?
@@ -89,15 +125,16 @@ abstract class Panel
      */
     public function renderCode($code, $dark = true)
     {
-        $code = '';
-        $code .= '<span class="fs-label">';
-        $code .= '<span class="fs-pre-wrap">wrap</span>';
-        $code .= '<pre class="debugger'. ($dark) ? ' fs-dark' : '' . '">';
-        $code .= $code;
-        $code .= '</pre>';
-        $code .= '</span>';
+        $darkClass = ($dark) ? ' fs-dark' : '';
+        $renderCode = '';
+        $renderCode .= '<span class="fs-label">';
+        $renderCode .= '<span class="fs-pre-wrap">wrap</span>';
+        $renderCode .= '<pre class="debugger'. $darkClass . '">';
+        $renderCode .= $code;
+        $renderCode .= '</pre>';
+        $renderCode .= '</span>';
 
-        return $code;
+        return $renderCode;
     }
 
     /**
@@ -136,22 +173,24 @@ abstract class Panel
      */
     public function renderTrace($debug_backtrace)
     {
-        $traceLine = '';
+        $renderTrace = '';
+        $renderTrace .= '<span class="fs-label">';
         foreach ($debug_backtrace as $index => $trace) {
-            $traceLine .= '#' . $index . ' ';
+            $renderTrace .= '#' . $index . ' ';
             if (!empty($trace['file'])) {
-                $traceLine .= $trace['file'];
+                $renderTrace .= $trace['file'];
             }
             if (!empty($trace['line'])) {
-                $traceLine .= '(' . $trace['line'] . ') ';
+                $renderTrace .= '(' . $trace['line'] . ') ';
             }
             if (!empty($trace['class'])) {
-                $traceLine .= $trace['class'] . '::';
+                $renderTrace .= $trace['class'] . '::';
             }
-            $traceLine .= $trace['function'] . '()'
+            $renderTrace .= $trace['function'] . '()'
                 . '<br>';
         }
-        return $traceLine;
+        $renderTrace .= '</span>';
+        return $renderTrace;
     }
 
     /**

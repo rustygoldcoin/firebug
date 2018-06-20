@@ -1,4 +1,6 @@
 # Release Changes
+* 1.6.0
+    * Add ability to renderSeparator() and renderLabel() within a panel.
 * 1.5.0
     * Add ability to renderJson() which takes either and object or a json string and renders it within a <pre> tag.
     * Add ability to renderHtml() which takes string html and renders it within a <pre> tag.
