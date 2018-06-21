@@ -128,6 +128,8 @@ abstract class Panel
         $darkClass = ($dark) ? ' fs-dark' : '';
         $renderCode = '';
         $renderCode .= '<span class="fs-label">';
+        $renderCode .= '<span class="fs-pre-expand">expand</span>';
+        $renderCode .= ' | ';
         $renderCode .= '<span class="fs-pre-wrap">wrap</span>';
         $renderCode .= '<pre class="debugger'. $darkClass . '">';
         $renderCode .= $code;

@@ -5,17 +5,32 @@
     /**
      * Global
      */
-     .fs-debug-panel h1,
-     .fs-debug-panel h2,
-     .fs-debug-panel h3,
-     .fs-debug-panel h4,
-     .fs-debug-panel h5,
-     .fs-debug-panel h6,
-     .fs-debug-panel p
-     {
-         font-family: "Courier New", Courier, monospace;
-         font-weight: 800;
-     }
+     
+    .fs-debug-panel h1,
+    .fs-debug-panel h2,
+    .fs-debug-panel h3,
+    .fs-debug-panel h4,
+    .fs-debug-panel h5,
+    .fs-debug-panel h6,
+    .fs-debug-panel p
+    {
+        font-family: "Courier New", Courier, monospace;
+    }
+
+    .fs-debug-panel h1,
+    .fs-debug-panel h2,
+    .fs-debug-panel h3,
+    .fs-debug-panel h4,
+    .fs-debug-panel h5,
+    .fs-debug-panel h6
+    {
+        font-weight: 800;
+    }
+
+    .fs-debug-panel p
+    {
+        font-weight: 400;
+    }
 
     .fs-debug-panel {
         font-family: "Courier New", Courier, monospace;
@@ -34,6 +49,7 @@
         margin: 0;
         font-size: 32px;
         line-height: 35px;
+        font-weight: 800;
     }
     .fs-debug-panel h3.fs-title {
         color: #464646;
@@ -58,6 +74,7 @@
         color: #464646;
         display: block;
         margin: 0 0 5px 0;
+        font-weight: 400;
     }
     .fs-debug-panel .fs-openCloseBtn {
         color: #5178f1;
@@ -75,6 +92,7 @@
         overflow-x: scroll;
         font-size: 14px;
         line-height: 16px;
+        height: 200px;
     }
     .fs-debug-panel pre.fs-wrap {
         white-space: pre-wrap;
@@ -84,9 +102,13 @@
         word-wrap: break-word;
         overflow: hidden;
     }
-    .fs-debug-panel .fs-pre-wrap {
+    .fs-debug-panel pre.fs-expand {
+        height: auto;
+    }
+    .fs-debug-panel .fs-pre-wrap,
+    .fs-debug-panel .fs-pre-expand
+    {
         font-size: 12px;
-        display: block;
         color: #5178f1;
         cursor: pointer;
         text-decoration: underline;
@@ -173,6 +195,21 @@
                     } else {
                         pre.classList.add('fs-wrap')
                         button.innerHTML = 'unwrap';
+                    }
+                }
+            }
+
+            var preExpandButtons = document.querySelectorAll('.fs-pre-expand');
+            for (i = 0; i < preExpandButtons.length; i++) {
+                preExpandButtons[i].onclick = function () {
+                    var button = this;
+                    var pre = button.parentElement.getElementsByTagName('pre')[0];
+                    if (pre.classList.contains('fs-expand')) {
+                        pre.classList.remove('fs-expand')
+                        button.innerHTML = 'expand';
+                    } else {
+                        pre.classList.add('fs-expand')
+                        button.innerHTML = 'collapse';
                     }
                 }
             }

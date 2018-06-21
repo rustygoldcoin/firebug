@@ -1,4 +1,7 @@
 # Release Changes
+* 1.7.0
+    * For pre tags, add max-height and functionality to reveal entire code.
+    * Fix font-weight issues for p tags within panels.
 * 1.6.1
     * Adjust CSS to target font-weight: normal for all elements in panel.
 * 1.6.0
