@@ -1,4 +1,6 @@
 # Release Changes
+* 1.7.1
+    * Fix issue with all pre's being 200px
 * 1.7.0
     * For pre tags, add max-height and functionality to reveal entire code.
     * Fix font-weight issues for p tags within panels.
