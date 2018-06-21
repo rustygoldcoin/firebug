@@ -1,4 +1,6 @@
 # Release Changes
+* 1.6.1
+    * Adjust CSS to target font-weight: normal for all elements in panel.
 * 1.6.0
     * Add ability to renderSeparator() and renderLabel() within a panel.
 * 1.5.0
