@@ -1,4 +1,7 @@
 # Release Changes
+
+* 1.7.2
+    * Update the debugger.phtml panel to use the new rendering helpers.
 * 1.7.1
     * Fix issue with all pre's being 200px
 * 1.7.0

@@ -1,19 +1,17 @@
 <?php
-    $debuggers = $this->getDebuggers();
-?>
 
-<?php if (!empty($debuggers)) { ?>
-    <?php foreach ($debuggers as $debugger) { ?>
-        <span class="fs-label">
-            <?php echo $this->renderTrace($debugger->getTrace()); ?>
-        </span>
-        <span class="fs-label">
-            <span class="fs-pre-wrap">wrap</span>
-            <pre class="debugger fs-dark"><?php echo var_dump($debugger->getValue()); ?></pre>
-        </span>
-        <hr class="fs-hr">
-    <?php } ?>
-<?php } else { ?>
-    <p>No Debuggers Found...</p>
-<?php } ?>
+$debuggers = $this->getDebuggers();
+
+if (!empty($debuggers)) {
+    foreach ($debuggers as $debugger) {
+        ob_start();
+        var_dump($debugger->getValue());
+        $debug = ob_get_clean();
+        echo $this->renderTrace($debugger->getTrace()); 
+        echo $this->renderCode($debug);
+        echo $this->renderSeparator();
+     }
+} else {
+    echo $this->renderLabel('No Debuggers Found...');
+}
 
