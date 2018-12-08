@@ -1,4 +1,6 @@
 # Release Changes
+* 1.8.1
+    * Fix renderCode() so that it doesn't call htmlspecialchars() on entire panel.
 * 1.8.0
     * Remove renderHtml() and update renderCode() to use htmlspecialchars() around the code.
     * Update debugger(debug, exit = false) to use exitNow to allow a user to render the debug panel and exit the execution.

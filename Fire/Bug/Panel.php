@@ -131,11 +131,11 @@ abstract class Panel
         $renderCode .= ' | ';
         $renderCode .= '<span class="fs-pre-wrap">wrap</span>';
         $renderCode .= '<pre class="debugger'. $darkClass . '">';
-        $renderCode .= $code;
+        $renderCode .= htmlspecialchars($code);
         $renderCode .= '</pre>';
         $renderCode .= '</span>';
 
-        return htmlspecialchars($renderCode);
+        return $renderCode;
     }
 
     /**
