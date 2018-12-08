@@ -15,13 +15,17 @@
 
 /**
  * The debugger method for generating a debug message and stack trace.
- * @param  mixed $value The value you are debugging
+ * @param mixed $value The value you are debugging
+ * @param boolean $exit If we want to stop execution and render the panel
  * @return void
  */
-function debugger($value)
+function debugger($value, $exit = false)
 {
     if (php_sapi_name() === 'cli') {
         var_dump($value);
+        if ($exit) {
+            exit();
+        }
     } else {
         $fireBug = Fire\Bug::get();
         $debugger = new \Fire\Bug\Debugger();
@@ -30,5 +34,10 @@ function debugger($value)
         $fireBug
             ->getPanel(\Fire\Bug\Panel\Debugger::ID)
             ->addDebugger($debugger);
+
+        if ($exit) {
+            echo $fireBug->render();
+            exit();
+        }
     }
 }

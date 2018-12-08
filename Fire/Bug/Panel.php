@@ -13,7 +13,6 @@
  * @copyright Copyright (c) UA1 Labs
  */
 
-
 namespace Fire\Bug;
 
 /**
@@ -136,18 +135,7 @@ abstract class Panel
         $renderCode .= '</pre>';
         $renderCode .= '</span>';
 
-        return $renderCode;
-    }
-
-    /**
-     * Returns the HTML passed in wrapped within a <pre> tag.
-     * @param  string $content The code you want to render
-     * @param  boolean $dark Do you want the dark theme?
-     * @return string The HTML to render
-     */
-    public function renderHtml($html, $dark = true)
-    {
-        return $this->renderCode(htmlspecialchars($html), $dark);
+        return htmlspecialchars($renderCode);
     }
 
     /**
@@ -165,7 +153,7 @@ abstract class Panel
         } else {
             $jsonCode = json_encode(json_decode($json), JSON_PRETTY_PRINT);
         }
-        return $this->renderCode(htmlspecialchars($jsonCode), $dark);
+        return $this->renderCode($jsonCode, $dark);
     }
 
     /**

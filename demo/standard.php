@@ -11,6 +11,8 @@
 // //call debugger
 // debugger('debug');
 
+// debugger('test', true);
+
 // debugger($bug);
 
 // //render the firebug debug panel

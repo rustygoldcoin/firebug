@@ -1,5 +1,7 @@
 # Release Changes
-
+* 1.8.0
+    * Remove renderHtml() and update renderCode() to use htmlspecialchars() around the code.
+    * Update debugger(debug, exit = false) to use exitNow to allow a user to render the debug panel and exit the execution.
 * 1.7.2
     * Update the debugger.phtml panel to use the new rendering helpers.
 * 1.7.1

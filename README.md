@@ -45,6 +45,12 @@ Example:
 
     debugger('debug value...');
 
+Debuggers also take a second parameter called `exit`. If you decide you need to exit the execution of any process and render the debug panel at that point in execution, you may do so by passing in true as a second parameter.
+
+Example:
+
+    debugger('debug value...', true);
+
 #### Debugger Panel and X-Debug Overlay
 
 In this project, it was decided to disable x-debug overlay for var_dumps. This makes it easier to read the entire output of debuggers without having to scroll to much left and right. So, if you would like to enable it, here is the code you will want to run when you initize your application.
