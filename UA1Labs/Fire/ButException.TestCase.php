@@ -13,15 +13,15 @@
  * @copyright Copyright (c) UA1 Labs
  */
 
-namespace Test\Fire;
+namespace Test\UA1Labs\Fire;
 
-use Fire\Test\TestCase;
-use Fire\BugException as FireBugException;
+use \UA1Labs\Fire\Test\TestCase;
+use \UA1Labs\Fire\BugException;
 
 /**
  * Test suite for Fire\BugException.
  */
-class BugException extends TestCase
+class BugExceptionTestCase extends TestCase
 {
     /**
      * Tests that there is a Fire\BugException.
@@ -30,10 +30,10 @@ class BugException extends TestCase
     public function testBugExceptionThrown()
     {
         try {
-            throw new FireBugException();
-        } catch (FireBugException $e) {
-            $this->should('When Fire\BugException is thrown, it should be of the right type.');
-            $this->assert($e instanceof FireBugException);
+            throw new BugException();
+        } catch (BugException $e) {
+            $this->should('When UA1Labs\Fire\BugException is thrown, it should be of the right type.');
+            $this->assert($e instanceof BugException);
         }
     }
 

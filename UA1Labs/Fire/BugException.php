@@ -7,21 +7,19 @@
  * / /_/ / ___ |/ /  / /___/ /_/ / /_/ (__  )
  * `____/_/  |_/_/  /_____/`__,_/_.___/____/
  *
- * @package FireStudio
- * @subpackage FireBug
+ * @package FireBug
  * @author UA1 Labs Developers https://ua1.us
  * @copyright Copyright (c) UA1 Labs
  */
 
-namespace Test\Mock\Fire\Bug;
+namespace UA1Labs\Fire;
 
-use Fire\Bug\Panel;
+use \Exception;
 
 /**
- * Test panel used so we can test the functionality of
- * the abstract Fire\Bug\Panel class.
+ * Class used to proxy Exceptions for \UA1Labs\Fire\Bug.
  */
-class PanelMock extends Panel
+class BugException extends Exception
 {
 
 }

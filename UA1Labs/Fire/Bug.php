@@ -7,17 +7,16 @@
  * / /_/ / ___ |/ /  / /___/ /_/ / /_/ (__  )
  * `____/_/  |_/_/  /_____/`__,_/_.___/____/
  *
- * @package FireStudio
- * @subpackage FireBug
+ * @package FireBug
  * @author UA1 Labs Developers https://ua1.us
  * @copyright Copyright (c) UA1 Labs
  */
 
-namespace Fire;
+namespace UA1Labs\Fire;
 
-use \Fire\Bug\Panel;
-use \Fire\Bug\Panel\Debugger as DebuggerPanel;
-use \Fire\BugException;
+use \UA1Labs\Fire\Bug\Panel;
+use \UA1Labs\Fire\Bug\Panel\Debugger as DebuggerPanel;
+use \UA1Labs\Fire\BugException;
 
 /**
  * The purpose of this class is to provide a single place where you
@@ -31,117 +30,126 @@ final class Bug extends Panel
     const TEMPLATE = '/firebug.phtml';
 
     /**
-     * Instance of Fire\Bug
-     * @var \Fire\Bug
+     * Instance of \UA1Labs\Fire\Bug.
+     *
+     * @var \UA1Labs\Fire\Bug
      */
-    static private $_instance;
+    static private $instance;
 
     /**
-     * Is firebug enabled?
+     * Is FireBug enabled.
+     *
      * @var boolean
      */
-    private $_enabled;
+    private $enabled;
 
     /**
-     * The firebug timer start time
+     * The firebug timer start time.
+     *
      * @var float
      */
-    private $_startTime;
+    private $startTime;
 
     /**
      * Array of panel objects.
-     * @var \Fire\Bug\Panel[]
+     *
+     * @var array<UA1Labs\Fire\Bug\Panel>
      */
-    private $_panels;
+    private $panels;
 
     /**
-     * The constructor
+     * The class constructor.
      */
     public function __construct()
     {
         parent::__construct(self::ID, self::NAME, __DIR__ . self::TEMPLATE);
-        $this->_panels = [];
-        $this->_enabled = false;
+        $this->panels = [];
+        $this->enabled = false;
         $this->addPanel(new DebuggerPanel());
     }
 
     /**
-     * Gets the instance of Fire\Bug.
-     * @return \Fire\Bug
+     * Gets the instance of \UA1Labs\Fire\Bug.
+     *
+     * @return \UA1Labs\Fire\Bug
      */
     static function get()
     {
-        if (!self::$_instance) {
-            self::$_instance = new self();
+        if (!self::$instance) {
+            self::$instance = new self();
         }
-        return self::$_instance;
+        return self::$instance;
     }
 
     /**
-     * Enables firebug.
+     * Enables FireBug.
+     *
      * @return void
      */
     public function enable()
     {
-        $this->_enabled = true;
-        $this->_startTime = $this->timer();
+        $this->enabled = true;
+        $this->startTime = $this->timer();
     }
 
     /**
-     * Determines if firebug is enabled.
+     * Determines if FireBug is enabled.
+     *
      * @return boolean
      */
     public function isEnabled()
     {
-        return $this->_enabled;
+        return $this->enabled;
     }
 
     /**
      * Destroys the current instance of FireBug.
-     * @return void
      */
     static function destroy()
     {
-        self::$_instance = null;
+        self::$instance = null;
     }
 
     /**
-     * Adds a Fire\Bug\Panel object to the the array of panels.
-     * @param \Fire\Bug\Panel $panel The panel you are adding to FireBug
-     * @return void
+     * Adds a \UA1Labs\Fire\Bug\Panel object to the the array of panels.
+     *
+     * @param \UA1Labs\Fire\Bug\Panel $panel The panel you are adding to FireBug
      */
     public function addPanel(Panel $panel)
     {
         $id = $panel->getId();
-        if (!empty($this->_panels[$id])) {
+        if (!empty($this->panels[$id])) {
             throw new BugException('[FireBug] No panels exist with ID "' . $id . '".');
         }
-        $this->_panels[$id] = $panel;
+        $this->panels[$id] = $panel;
     }
 
     /**
      * Gets a stored panel object by its ID.
-     * @param [type] $id The id of defined on the Fire\Bug\Panel instance object.
-     * @return \Fire\Bug\Panel
+     *
+     * @param string $id The id of defined on the Fire\Bug\Panel instance object.
+     * @return \UA1Labs\Fire\Bug\Panel
      */
     public function getPanel($id)
     {
-        return $this->_panels[$id];
+        return $this->panels[$id];
     }
 
     /**
      * Gets all stored panels.
-     * @return \Fire\Bug\Panel[]
+     *
+     * @return array<\UA1Labs\Fire\Bug\Panel>
      */
     public function getPanels()
     {
-        return $this->_panels;
+        return $this->panels;
     }
 
     /**
      * Method used to measure the amount of time that passed in milliseconds.
      * If you pass in a $start time, then you will be returned time length from
      * the start time. If you don't pass anything in, a start time will be returned.
+     *
      * @param float|null $start The start time.
      * @return float
      */
@@ -156,29 +164,29 @@ final class Bug extends Panel
     }
 
     /**
-     * If the timer was started, the load time will be returned
+     * If the timer was started, the load time will be returned.
+     *
      * @return float|boolean
      */
     public function getLoadTime()
     {
-        if (!empty($this->_startTime)) {
-            return $this->timer($this->_startTime);
+        if (!empty($this->startTime)) {
+            return $this->timer($this->startTime);
         }
         return false;
     }
 
     /**
      * Method used to render FireBug.
-     * @return void
      */
     public function render()
     {
-        if ($this->_enabled) {
+        if ($this->enabled) {
             if (php_sapi_name() === 'cli') {
                 echo 'FireBug: ' . $this->getLoadTime() . ' milliseconds' . "\n";
             } else {
                 ob_start();
-                include $this->_template;
+                include $this->template;
                 $debugPanel = ob_get_contents();
                 ob_end_clean();
 

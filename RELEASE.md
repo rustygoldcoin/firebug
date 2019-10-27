@@ -1,4 +1,8 @@
 # Release Changes
+* 2.0.0
+    * Added UA1Labs to namespace
+    * Bring code base up to PSR-2 compliance
+    * Pull in FireTest 2.0 and update broken tests
 * 1.8.1
     * Fix renderCode() so that it doesn't call htmlspecialchars() on entire panel.
 * 1.8.0
@@ -44,13 +48,3 @@
     * Add hr separator between debuggers.
 * 1.0.0
     * Initial Release
-
-**Steps To Create Release**
-
-1. Make sure all code is commented out in `demo/standard.php`
-2. Add version changes to `RELEASE.md`.
-3. Update release version in `composer.json`.
-4. Run `composer run build` to generate the new documentation for the updates and to run unit tests.
-5. Merge changes to master branch and push master branch changes upstream.
-6. Create git tag with release version: `git tag X.X.X`
-7. Push new git tag upstream.

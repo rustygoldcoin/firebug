@@ -7,13 +7,12 @@
  * / /_/ / ___ |/ /  / /___/ /_/ / /_/ (__  )
  * `____/_/  |_/_/  /_____/`__,_/_.___/____/
  *
- * @package FireStudio
- * @subpackage FireBug
+ * @package FireBug
  * @author UA1 Labs Developers https://ua1.us
  * @copyright Copyright (c) UA1 Labs
  */
 
-namespace Fire\Bug;
+namespace UA1Labs\Fire\Bug;
 
 /**
  * Abstract class all debug panels sould inheret from.
@@ -23,65 +22,72 @@ abstract class Panel
 
     /**
      * The id given to the panel.
+     *
      * @var string
      */
-    protected $_id;
+    protected $id;
 
     /**
      * A readable name given to the panel.
+     *
      * @var string
      */
-    protected $_name;
+    protected $name;
 
     /**
      * A path to a pthml template.
+     *
      * @var string
      */
-    protected $_template;
+    protected $template;
 
     /**
-     * The Constructor
+     * The class constructor.
+     *
      * @param string $id The ID of this panel
      * @param string $name The name of this panel
      * @param string $template Path to a template for this panel
      */
     public function __construct($id, $name, $template)
     {
-        $this->_id = $id;
-        $this->_name = $name;
-        $this->_template = $template;
+        $this->id = $id;
+        $this->name = $name;
+        $this->template = $template;
     }
 
     /**
      * Gets the ID for the given panel.
+     *
      * @return string The ID
      */
     public function getId()
     {
-        return $this->_id;
+        return $this->id;
     }
 
     /**
      * Sets the name for the given panel.
-     * @param string $name The name of the panel.
-     * @return void
+     *
+     * @param string $name The name of the panel
      */
     public function setName($name)
     {
-        $this->_name = $name;
+        $this->name = $name;
     }
 
     /**
      * Gets the name for the given panel.
+     *
      * @return string The name
      */
     public function getName()
     {
-        return $this->_name;
+        return $this->name;
     }
 
     /**
      * Returns a label.
+     *
      * @param  string $content The content of the label
      * @param  string  $class CSV list of classes you want to add
      * @param  string  $style Custom styles you want added
@@ -100,10 +106,11 @@ abstract class Panel
 
     /**
      * Returns a separator.
+     *
      * @param  boolean $bold Do you want a bold separator
      * @param  string  $class CSV list of classes you want to add
      * @param  string  $style Custom styles you want added
-     * @return string HTML code for the separator.
+     * @return string HTML code for the separator
      */
     public function renderSeparator($bold = true, $class = '', $style = '')
     {
@@ -118,6 +125,7 @@ abstract class Panel
 
     /**
      * Returns the code passed in wrapped within a <pre> tag.
+     *
      * @param  string $content The code you want to render
      * @param  boolean $dark Do you want the dark theme?
      * @return string The HTML to render
@@ -140,6 +148,7 @@ abstract class Panel
 
     /**
      * Returns the JSON passed in wrapped within a <pre> tag.
+     *
      * @param  string $content The code you want to render
      * @param  boolean $dark Do you want the dark theme?
      * @return string The HTML to render
@@ -158,6 +167,7 @@ abstract class Panel
 
     /**
      * Returns a rendered debug_backtrace.
+     *
      * @param array $debug_backtrace
      * @return string
      */
@@ -185,13 +195,12 @@ abstract class Panel
 
     /**
      * Renders the panel.
-     * @return void
      */
     public function render()
     {
         ob_start();
         include __DIR__ . '/panel-top.phtml';
-        include $this->_template;
+        include $this->template;
         include __DIR__ . '/panel-bottom.phtml';
         ob_end_flush();
     }

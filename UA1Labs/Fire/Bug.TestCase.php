@@ -7,22 +7,21 @@
  * / /_/ / ___ |/ /  / /___/ /_/ / /_/ (__  )
  * `____/_/  |_/_/  /_____/`__,_/_.___/____/
  *
- * @package FireStudio
- * @subpackage FireBug
+ * @package FireBug
  * @author UA1 Labs Developers https://ua1.us
  * @copyright Copyright (c) UA1 Labs
  */
 
-namespace Test\Fire;
-use Fire\Test\TestCase;
-use Fire\Bug as FireBug;
-use Fire\Bug\Panel\Debugger as DebuggerPanel;
-use Fire\BugException;
+namespace Test\UA1Labs\Fire;
+use \UA1Labs\Fire\Test\TestCase;
+use \UA1Labs\Fire\Bug as FireBug;
+use \UA1Labs\Fire\Bug\Panel\Debugger as DebuggerPanel;
+use \UA1Labs\Fire\BugException;
 
 /**
  * Test Suite for Fire\Bug.
  */
-class Bug extends TestCase
+class BugTestCase extends TestCase
 {
 
     /**

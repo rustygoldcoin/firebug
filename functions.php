@@ -7,17 +7,16 @@
  * / /_/ / ___ |/ /  / /___/ /_/ / /_/ (__  )
  * `____/_/  |_/_/  /_____/`__,_/_.___/____/
  *
- * @package FireStudio
- * @subpackage FireBug
+ * @package FireBug
  * @author UA1 Labs Developers https://ua1.us
  * @copyright Copyright (c) UA1 Labs
  */
 
 /**
  * The debugger method for generating a debug message and stack trace.
+ *
  * @param mixed $value The value you are debugging
  * @param boolean $exit If we want to stop execution and render the panel
- * @return void
  */
 function debugger($value, $exit = false)
 {
@@ -27,12 +26,12 @@ function debugger($value, $exit = false)
             exit();
         }
     } else {
-        $fireBug = Fire\Bug::get();
-        $debugger = new \Fire\Bug\Debugger();
+        $fireBug = \UA1Labs\Fire\Bug::get();
+        $debugger = new \UA1Labs\Fire\Bug\Debugger();
         $debugger->setValue($value);
         $debugger->setTrace(debug_backtrace());
         $fireBug
-            ->getPanel(\Fire\Bug\Panel\Debugger::ID)
+            ->getPanel(\UA1Labs\Fire\Bug\Panel\Debugger::ID)
             ->addDebugger($debugger);
 
         if ($exit) {
