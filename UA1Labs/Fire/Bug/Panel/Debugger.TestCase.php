@@ -7,8 +7,7 @@
  * / /_/ / ___ |/ /  / /___/ /_/ / /_/ (__  )
  * `____/_/  |_/_/  /_____/`__,_/_.___/____/
  *
- * @package FireStudio
- * @subpackage FireBug
+ * @package FireBug
  * @author UA1 Labs Developers https://ua1.us
  * @copyright Copyright (c) UA1 Labs
  */
@@ -16,10 +15,10 @@
 
 namespace Test\Fire\Bug\Panel;
 
-use Fire\Test\TestCase;
-use Fire\Bug\Debugger as FireBugDebugger;
-use Fire\Bug\Panel\Debugger as FireBugPanelDebugger;
-use Fire\BugException;
+use \UA1Labs\Fire\Test\TestCase;
+use \UA1Labs\Fire\Bug\Debugger as FireBugDebugger;
+use \UA1Labs\Fire\Bug\Panel\Debugger as FireBugPanelDebugger;
+use \UA1Labs\Fire\BugException;
 
 /**
  * Test suite for Fire\Bug\Panel\Debugger
@@ -28,7 +27,6 @@ class DebuggerTest extends TestCase {
 
     /**
      * Tests the Fire\Bug\Panel\Debugger::addDebugger() and Fire\Bug\Panel\Debugger:getDebuggers() methods.
-     * @return void
      */
     public function testAddAndGetDebugger()
     {

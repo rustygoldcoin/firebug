@@ -7,18 +7,16 @@
  * / /_/ / ___ |/ /  / /___/ /_/ / /_/ (__  )
  * `____/_/  |_/_/  /_____/`__,_/_.___/____/
  *
- * @package FireStudio
- * @subpackage FireBug
+ * @package FireBug
  * @author UA1 Labs Developers https://ua1.us
  * @copyright Copyright (c) UA1 Labs
  */
 
+namespace UA1Labs\Fire\Bug\Panel;
 
-namespace Fire\Bug\Panel;
-
-use \Fire\Bug\Panel;
-use \Fire\Bug\Debugger as FireBugDebugger;
-use \Fire\BugException;
+use \UA1Labs\Fire\Bug\Panel;
+use \UA1Labs\Fire\Bug\Debugger as FireBugDebugger;
+use \UA1Labs\Fire\BugException;
 
 /**
  * This class represents the panel for debuggers to be displayed
@@ -27,71 +25,75 @@ use \Fire\BugException;
 class Debugger extends Panel
 {
 
-    /**
-     * Constants
-     */
     const ID = 'debugger';
-    const NAME = '{count} Debuggers';
+    const NAME = 'Debuggers {{count}}';
     const TEMPLATE = '/debugger.phtml';
 
     /**
      * If true, allows xdebug overlays in var_dump outputs.
+     *
      * @var boolean
      */
-    private $_enableXDebugOverlay;
+    private $enableXDebugOverlay;
 
     /**
-     * The constructor
+     * An array containing all debuggers.
+     *
+     * @var array<\UA1Labs\Fire\Bug\Debugger>
+     */
+    private $debugger;
+
+    /**
+     * The class constructor.
      */
     public function __construct()
     {
         parent::__construct(self::ID, self::NAME, __DIR__ . self::TEMPLATE);
-        $this->_debuggers = [];
+        $this->debuggers = [];
     }
 
     /**
      * Returns all debuggers that have been added.
-     * @return \Fire\Bug\Debugger[]
+     *
+     * @return array<\UA1Labs\Fire\Bug\Debugger>
      */
     public function getDebuggers()
     {
-        return $this->_debuggers;
+        return $this->debuggers;
     }
 
     /**
      * Adds a debugger to the array of debuggers for this panel.
-     * @param \Fire\Bug\Debugger $debugger
-     * @return void
+     *
+     * @param \UA1Labs\Fire\Bug\Debugger $debugger The debugger object
      */
     public function addDebugger($debugger)
     {
         if (!($debugger instanceof FireBugDebugger)) {
-            throw new BugException('Debuggers must extend class Fire\Bug\Debugger.');
+            throw new BugException('Debuggers must extend class \UA1Labs\Fire\Bug\Debugger.');
         }
-        $this->_debuggers[] = $debugger;
+        $this->debuggers[] = $debugger;
     }
 
     /**
      * Enables the x-debug overlay html. If this is enabled and you have x-debug
      * installed, you will be able to see all of the x-debug data that gets
      * added when you use var_dump().
-     * @return void
      */
     public function enableXDebugOverlay()
     {
-        $this->_enableXDebugOverlay = true;
+        $this->enableXDebugOverlay = true;
     }
 
     /**
      * Renders the panel HTML.
-     * @return void
      */
     public function render() {
-        if (!$this->_enableXDebugOverlay) {
+        if (!$this->enableXDebugOverlay) {
             ini_set('xdebug.overload_var_dump', 'off');
         }
-        $debuggerCount = count($this->_debuggers);
-        $this->setName(str_replace('{count}', '{' . $debuggerCount . '}', self::NAME));
+        $debuggerCount = count($this->debuggers);
+        $this->setName(str_replace('{{count}}', '{' . $debuggerCount . '}', self::NAME));
         parent::render();
     }
 }

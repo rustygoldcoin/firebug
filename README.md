@@ -1,27 +1,22 @@
 # FireBug
-An expandable PHP debugger panel.
+
+An expandable PHP debug panel.
 
 The true power of FireBug is that it can easily be added to any project and expanded upon! You can even create your own panels to track whatever data you care about while your going through debugging. FireBug comes featured with a `Debuggers` panel. Which allows you to call `debugger()` anywhere inside of your application. All debuggers will display the entire `debug_trace` along with `var_dump` within the "Debuggers" section of the FireBug Panel.
 
-### FireBug API Documentation
+### Documentation
 
-[FireBug API Documentation](https://ua1.us/open-source/firebug/api/)
+https://ua1.us/projects/firebug/
 
-### Installation
+### Installation FireBug Using Composer
 
-1. Add `ua1-labs\firebug:dev-master` to your `require-dev` configuration in your `composer.json` file.
-
-        "require": {
-            "ua1-labs/firebug": "dev-master"
-        }
-
-2. Run `composer install`
+    composer require ua1-labs/firebug
 
 ### Enable FireBug
 
 For performance reasons, firebug is initially disabled and needs enabled in order to use it. Here's how:
 
-    $fireBug = Fire\Bug::get();
+    $fireBug = \UA1Labs\Fire\Bug::get();
     $fireBug->enable();
 
 **FireBug Timer**
@@ -32,7 +27,7 @@ Once FireBug is enabled, it will start a timer that will report how much time it
 
 Once you've installed FireBug, it's time to output it somewhere in your HTML.
 
-    $fireBug = Fire\Bug::get();
+    $fireBug = \UA1Labs\Fire\Bug::get();
     echo $fireBug->render();
 
 When rendering out FireBug, it is suggested that you place it the footer of your application.
@@ -55,8 +50,8 @@ Example:
 
 In this project, it was decided to disable x-debug overlay for var_dumps. This makes it easier to read the entire output of debuggers without having to scroll to much left and right. So, if you would like to enable it, here is the code you will want to run when you initize your application.
 
-    $fireBug = Fire\Bug::get();
-    $debuggerPanel = $fireBug->getPanel(Fire\Bug\Panel\Debugger::ID);
+    $fireBug = \UA1Labs\Fire\Bug::get();
+    $debuggerPanel = $fireBug->getPanel(\UA1Labs\Fire\Bug\Panel\Debugger::ID);
     $fireBug->enableXDebugOverlay();
 
 ### Creating And Registering Your Own Panel
@@ -65,15 +60,15 @@ We've given you everything you need to easily create your own panel.
 
 1. Create your own Panel Class:
 
-        namespace Fire\Bug\Panel;
+        namespace \UA1Labs\Fire\Bug\Panel;
 
-        use Fire\Bug\Panel;
+        use \UA1Labs\Fire\Bug\Panel;
 
         class MyOwnPanel extends Panel
         {
             const ID = 'myOwnPanel';
             const NAME = 'My Own Panel';
-            const TEMPLATE = '/pathto/my-own-panel.phtml';
+            const TEMPLATE = '/path-to/my-own-panel.phtml';
 
             public $myName;
 
@@ -99,7 +94,7 @@ We've given you everything you need to easily create your own panel.
 3. Register Your Panel
 
         $fireBug = Fire\Bug::get();
-        $fireBug->addPanel(new Fire\Bug\Panel\MyOwnPanel());
+        $fireBug->addPanel(new \UA1Labs\Fire\Bug\Panel\MyOwnPanel());
 
 Three easy steps and you just added your own panel to FireBug! Now with that being said, here is some info about how it works behind the scenes. Panels act as ViewModels. In the way that any data or methods you add to the panel object itself will also be available to the template object. In the example panel above you can see that the panel was created with a public property called `myName` and a method `myInfo`. In the template, you can see we are echoing out these values.
 
@@ -112,69 +107,3 @@ FireBug also comes bundled with a timer you may use to detect how much time a pr
     $startTime = $fireBug->timer();
     //get time length in milliseconds
     $timeLength = $fireBug->timer($startTime);
-
-### FireBug API
-
-    /**
-     * Gets the instance of Fire\Bug.
-     * @return Fire\Bug
-     */
-    static function get()
-
-    /**
-     * Destroys the current instance of FireBug.
-     * @return void
-     */
-    static function destroy()
-
-    /**
-     * Enables FireBug
-     * @return void
-     */
-    public function enable()
-
-    /**
-     * Determines if firebug is enabled.
-     * @return boolean
-     */
-    public function isEnabled()
-
-    /**
-     * Adds a Fire\Bug\Panel object to the the array of panels.
-     * @param Fire\Bug\Panel $panel The panel you are adding to FireBug
-     */
-    public function addPanel(Panel $panel)
-
-    /**
-     * Gets a stored panel object by its ID.
-     * @param [type] $id The id of defined on the Fire\Bug\Panel instance object.
-     * @return [type] Fire\Bug\Panel
-     */
-    public function getPanel($id)
-
-    /**
-     * Gets all stored panels.
-     * @return array<Fire\Bug\Panel>
-     */
-    public function getPanels()
-
-    /**
-     * Method used to measure the amount of time that passed in milliseconds.
-     * If you pass in a $start time, then you will be returned time length from
-     * the start time. If you don't pass anything in, a start time will be returned.
-     * @param  float|null $start The start time.
-     * @return float
-     */
-    public function timer($start = null)
-
-    /**
-     * If the timer was started, the load time will be returned
-     * @return float
-     */
-    public function getLoadTime()
-
-    /**
-     * Method used to render FireBug.
-     * @return void
-     */
-    public function render()

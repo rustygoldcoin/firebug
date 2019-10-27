@@ -7,30 +7,28 @@
  * / /_/ / ___ |/ /  / /___/ /_/ / /_/ (__  )
  * `____/_/  |_/_/  /_____/`__,_/_.___/____/
  *
- * @package FireStudio
- * @subpackage FireBug
+ * @package FireBug
  * @author UA1 Labs Developers https://ua1.us
  * @copyright Copyright (c) UA1 Labs
  */
 
-namespace Test\Fire\Bug;
+namespace Test\UA1Labs\Fire\Bug;
 
-use Fire\Test\TestCase;
-use Fire\Bug\Debugger as FireBugDebugger;
+use \UA1Labs\Fire\Test\TestCase;
+use \UA1Labs\Fire\Bug\Debugger;
 
 /**
  * Test suite for class Fire\Bug\Debugger
  */
-class DebuggerTest extends TestCase
+class DebuggerTestCase extends TestCase
 {
 
     /**
      * Testing the setMessage()/getMessage() methods.
-     * @return void
      */
     public function testSetAndGetValue()
     {
-        $debugger = new FireBugDebugger();
+        $debugger = new Debugger();
         $test = [
             'string',
             1,
@@ -48,11 +46,10 @@ class DebuggerTest extends TestCase
 
      /**
       * Testing the getTrace()/setTrace() methods.
-      * @return void
       */
      public function testSetAndGetTrace()
      {
-         $debugger = new FireBugDebugger();
+         $debugger = new Debugger();
          $stackTrace = ['stack_trace'];
          $debugger->setTrace($stackTrace);
          $trace = $debugger->getTrace();
