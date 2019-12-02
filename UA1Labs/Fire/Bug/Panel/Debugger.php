@@ -26,8 +26,6 @@ class Debugger extends Panel
 {
 
     const ID = 'debugger';
-    const NAME = 'Debuggers {{count}}';
-    const TEMPLATE = '/debugger.phtml';
 
     /**
      * If true, allows xdebug overlays in var_dump outputs.
@@ -48,7 +46,13 @@ class Debugger extends Panel
      */
     public function __construct()
     {
-        parent::__construct(self::ID, self::NAME, __DIR__ . self::TEMPLATE);
+        parent::__construct(self::ID, 'Debuggers {{count}}', __DIR__ . '/debugger.phtml');
+        $this->setDescription(
+            'This panel shows debug logs that were invoked using the debugger() function. ' .
+            'The debugger() function is similar to var_dump() but will display the inspected ' .
+            'variable in the panel below. The debug log will include a stack trace and ' .
+            'the var_dump output.'
+        );
         $this->debuggers = [];
     }
 
@@ -93,7 +97,7 @@ class Debugger extends Panel
             ini_set('xdebug.overload_var_dump', 'off');
         }
         $debuggerCount = count($this->debuggers);
-        $this->setName(str_replace('{{count}}', '{' . $debuggerCount . '}', self::NAME));
+        $this->setName(str_replace('{{count}}', '{' . $debuggerCount . '}', $this->name));
         parent::render();
     }
 }
