@@ -35,6 +35,13 @@ abstract class Panel
     protected $name;
 
     /**
+     * The description of the panel.
+     *
+     * @var string
+     */
+    protected $description;
+
+    /**
      * A path to a pthml template.
      *
      * @var string
@@ -53,6 +60,7 @@ abstract class Panel
         $this->id = $id;
         $this->name = $name;
         $this->template = $template;
+        $this->description = '';
     }
 
     /**
@@ -86,6 +94,26 @@ abstract class Panel
     }
 
     /**
+     * Sets the description for the given panel.
+     *
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * Retrusn the description for the given panel.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
      * Returns a label.
      *
      * @param  string $content The content of the label
@@ -95,11 +123,11 @@ abstract class Panel
      */
     public function renderLabel($content, $class = '', $style = '')
     {
-        $styleAttr = ($style) ? ' style="' . $style . '"' : '';
+        $styleAttr = ($style) ? ' style="' . $this->escape($style) . '"' : '';
         $classes = ($class) ? ' ' . $class : '';
         $renderLabel = '';
-        $renderLabel .= '<span class="fs-label' . $classes . '"' . $style . '>';
-        $renderLabel .= $content;
+        $renderLabel .= '<span class="fs-label' . $this->escape($classes) . '"' . $styleAttr . '>';
+        $renderLabel .= $this->escape($content);
         $renderLabel .= '</span>';
         return $renderLabel;
     }
@@ -114,12 +142,12 @@ abstract class Panel
      */
     public function renderSeparator($bold = true, $class = '', $style = '')
     {
-        $styleAttr = ($style) ? ' style="' . $style . '"' : '';
+        $styleAttr = ($style) ? ' style="' . $this->escape($style) . '"' : '';
         $classes = ($class) ? ' ' . $class : '';
         if ($bold) {
-            return '<hr class="fs-hr' . $classes . '"' . $styleAttr . '>';
+            return '<hr class="fs-hr' . $this->escape($classes) . '"' . $styleAttr . '>';
         } else {
-            return '<hr class="fs-hr-dotted' . $classes . '"' . $styleAttr . '>';
+            return '<hr class="fs-hr-dotted' . $this->escape($classes) . '"' . $styleAttr . '>';
         }
     }
 
@@ -139,7 +167,7 @@ abstract class Panel
         $renderCode .= ' | ';
         $renderCode .= '<span class="fs-pre-wrap">wrap</span>';
         $renderCode .= '<pre class="debugger'. $darkClass . '">';
-        $renderCode .= htmlspecialchars($code);
+        $renderCode .= $this->escape($code);
         $renderCode .= '</pre>';
         $renderCode .= '</span>';
 
@@ -176,21 +204,32 @@ abstract class Panel
         $renderTrace = '';
         $renderTrace .= '<span class="fs-label">';
         foreach ($debug_backtrace as $index => $trace) {
-            $renderTrace .= '#' . $index . ' ';
+            $renderTrace .= '#' . $this->escape($index) . ' ';
             if (!empty($trace['file'])) {
-                $renderTrace .= $trace['file'];
+                $renderTrace .= $this->escape($trace['file']);
             }
             if (!empty($trace['line'])) {
-                $renderTrace .= '(' . $trace['line'] . ') ';
+                $renderTrace .= '(' . $this->escape($trace['line']) . ') ';
             }
             if (!empty($trace['class'])) {
-                $renderTrace .= $trace['class'] . '::';
+                $renderTrace .= $this->escape($trace['class']) . '::';
             }
-            $renderTrace .= $trace['function'] . '()'
+            $renderTrace .= $this->escape($trace['function']) . '()'
                 . '<br>';
         }
         $renderTrace .= '</span>';
         return $renderTrace;
+    }
+
+    /**
+     * Escapes content to prevent XSS attacks.
+     *
+     * @param string $val
+     * @return string
+     */
+    public function escape($val)
+    {
+        return htmlspecialchars($val, ENT_COMPAT | ENT_HTML401, 'UTF-8');
     }
 
     /**

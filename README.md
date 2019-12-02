@@ -52,7 +52,7 @@ In this project, it was decided to disable x-debug overlay for var_dumps. This m
 
     $fireBug = \UA1Labs\Fire\Bug::get();
     $debuggerPanel = $fireBug->getPanel(\UA1Labs\Fire\Bug\Panel\Debugger::ID);
-    $fireBug->enableXDebugOverlay();
+    $debuggerPanel->enableXDebugOverlay();
 
 ### Creating And Registering Your Own Panel
 
