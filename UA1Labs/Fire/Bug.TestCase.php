@@ -17,6 +17,7 @@ use \UA1Labs\Fire\Test\TestCase;
 use \UA1Labs\Fire\Bug as FireBug;
 use \UA1Labs\Fire\Bug\Panel\Debugger as DebuggerPanel;
 use \UA1Labs\Fire\BugException;
+use \UA1Labs\Fire\Bug\Panel;
 
 /**
  * Test Suite for Fire\Bug.
@@ -83,6 +84,19 @@ class BugTestCase extends TestCase
         }
         $this->should('A Fire\BugException should be thown when trying to add a panel with a duplicate id.');
         $this->assert(isset($exception) && $exception instanceof BugException);
+
+        $this->should('Test that firebug panels are returned in the order they have been set by.');
+        $mockPanel = $this->getMockObject(Panel::class, [
+            'getId' => 'TestDebugPanel'
+        ]);
+        $panelOrder = [
+            'TestDebugPanel',
+            DebuggerPanel::ID
+        ];
+        $fireBug->addPanel($mockPanel);
+        $fireBug->setPanelOrder($panelOrder);
+        $panels = $fireBug->getPanels();
+        $this->assert(array_keys($panels) === $panelOrder);
     }
 
     /**
