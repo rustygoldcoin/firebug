@@ -58,6 +58,13 @@ final class Bug extends Panel
     private $panels;
 
     /**
+     * An array of panel IDs in the order you want them to display.
+     *
+     * @var array<string>
+     */
+    private $panelOrder;
+
+    /**
      * The class constructor.
      */
     public function __construct()
@@ -119,7 +126,7 @@ final class Bug extends Panel
     {
         $id = $panel->getId();
         if (!empty($this->panels[$id])) {
-            throw new BugException('[FireBug] No panels exist with ID "' . $id . '".');
+            throw new BugException('A panel already exists with ID "' . $id . '".');
         }
         $this->panels[$id] = $panel;
     }
@@ -142,7 +149,28 @@ final class Bug extends Panel
      */
     public function getPanels()
     {
-        return $this->panels;
+        if (!$this->panelOrder) {
+            return $this->panels;
+        }
+
+        $panels = [];
+        foreach ($this->panelOrder as $panelId) {
+            if (isset($this->panels[$panelId])) {
+                $panels[$panelId] = $this->panels[$panelId];
+            }
+        }
+        
+        return $panels;
+    }
+
+    /**
+     * Sets the order in which you want to see the panels.
+     *
+     * @param array<string> $panelOrder An array of panel ids
+     */
+    public function setPanelOrder($panelOrder)
+    {
+        $this->panelOrder = $panelOrder;
     }
 
     /**
